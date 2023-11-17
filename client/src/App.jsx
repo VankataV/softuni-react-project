@@ -8,10 +8,18 @@ import Account from './components/account/Account';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 
+import image from './images/backgroundImage.png'
+
 function App() {
 
     return (
-        <>
+        <div style={{
+            backgroundImage: `url(${image})`,
+            backgroundSize: 'cover',
+            minHeight: `100vh`,
+            backgroundRepeat: 'no-repeat',
+        }}>
+
             <Header />
 
             <Routes>
@@ -22,7 +30,7 @@ function App() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
             </Routes>
-        </>
+        </div   >
     )
 }
 
