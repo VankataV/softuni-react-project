@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import styles from './Play.module.css'
 
 import { Link } from 'react-router-dom'
 
@@ -8,10 +9,9 @@ function Play({
     producer,
     theater,
     imageUrl,
-    description
 }) {
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' , display:'inline-block', marginLeft:'30px', marginRight:'30px'}}>
             <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>

@@ -14,7 +14,7 @@ export default function Plays(){
 
     return (
         <>
-            <h2>All plays</h2>
+            <h2 style={{color:'#c1cbca', marginBottom:'50px'}}>All plays</h2>
             {plays.map(play=>(
                 <Play key={play._id} {...play}/>
             ))}
