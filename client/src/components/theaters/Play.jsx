@@ -3,7 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import { Link } from 'react-router-dom'
 
-function Theater() {
+function Play() {
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
@@ -23,4 +23,4 @@ function Theater() {
     );
 }
 
-export default Theater;
+export default Play;
