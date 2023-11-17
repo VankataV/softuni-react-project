@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Header from "./components/header/Header"
 import Home from './components/home/Home';
-import Plays from './components/theaters/Play';
+import Plays from './components/theaters/Plays';
 import Add from './components/add/Add';
 import Account from './components/account/Account';
 import Login from './components/login/Login';

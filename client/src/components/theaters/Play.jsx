@@ -3,18 +3,24 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 import { Link } from 'react-router-dom'
 
-function Play() {
+function Play({
+    title,
+    producer,
+    theater,
+    imageUrl,
+    description
+}) {
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+            <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
-                <Card.Title>Theater Name</Card.Title>
-                <Card.Text>
-                    Theater Description
-                </Card.Text>
+                <Card.Title>{title}</Card.Title>
             </Card.Body>
             <ListGroup className="list-group-flush">
-                <ListGroup.Item>Producer: </ListGroup.Item>
+                <ListGroup.Item>Producer: {producer}</ListGroup.Item>
+            </ListGroup>
+            <ListGroup className="list-group-flush">
+                <ListGroup.Item>Theater: {theater}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
                 <Card.Link as={Link} to="/details">Details</Card.Link>

@@ -1,7 +1,10 @@
 const baseUrl='http://localhost:3030/jsonstore'
 
 async function get(){
-    await fetch(`${baseUrl}/theaters`)
+    const response=await fetch(`${baseUrl}/theaters`)
+    const result=await response.json()
+
+    return result
 }
 
 async function post(data){
@@ -9,11 +12,17 @@ async function post(data){
         method:'POST',
         'content-type':'application/json',
         body:JSON.stringify(data)
-    }
-    )
+    })
+}
+
+async function getAll(){
+    const result =await get()
+
+    return Object.values(result)
 }
 
 export{
     get,
-    post
+    post,
+    getAll
 }

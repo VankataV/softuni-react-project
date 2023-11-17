@@ -7,6 +7,7 @@ const addSubmitHandler=async (e)=>{
     const data=Object.fromEntries(new FormData(e.currentTarget))
     await post(data)
 
+
 }
 
 export default function Add() {
@@ -20,6 +21,9 @@ export default function Add() {
 
                     <label htmlFor="producer">Producer</label>
                     <input type="text" id="producer" name="producer" placeholder="Enter producer name..." />
+
+                    <label htmlFor="theater">Theater name</label>
+                    <input type="text" id="theater" name="theater" placeholder="Enter theater name..." />
 
                     <label htmlFor="imageUrl">Image</label>
                     <input type="text" id="imageUrl" name="imageUrl" placeholder="Upload a photo..." />
