@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Header from "./components/header/Header"
 import Home from './components/home/Home';
@@ -11,8 +11,8 @@ function App() {
             <Header />
 
             <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/theaters' element={<Theaters />} />
+                <Route path='/' element={<Home />} />
+                <Route path='/theaters' element={<Theaters />} />
             </Routes>
         </>
     )
