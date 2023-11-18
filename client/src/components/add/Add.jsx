@@ -1,16 +1,22 @@
 import styles from './Add.module.css'
-import {get, post} from '../../lib/requests.js'
+import {post} from '../../lib/requests.js'
 
-const addSubmitHandler=async (e)=>{
-    e.preventDefault()
+import {useNavigate} from 'react-router-dom'
 
-    const data=Object.fromEntries(new FormData(e.currentTarget))
-    await post(data)
-
-
-}
 
 export default function Add() {
+    const navigate=useNavigate()
+    
+    const addSubmitHandler=async (e)=>{
+        e.preventDefault()
+    
+        const data=Object.fromEntries(new FormData(e.currentTarget))
+        await post(data)
+    
+        navigate('/')
+    
+    }
+
     return (
         <>
             <form id="add" className={styles.form} onSubmit={addSubmitHandler}>
