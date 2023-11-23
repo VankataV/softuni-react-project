@@ -15,6 +15,20 @@ async function post(data){
     })
 }
 
+async function put(data){
+    await fetch(`${baseUrl}/theaters`,{
+        method:"PUT",
+        'content-type':'application/json',
+        body:JSON.stringify(data)
+    })
+}
+
+async function del(){
+    await fetch(`${baseUrl}/theaters`,{
+        method:"DELETE"
+    })
+}
+
 async function getAll(){
     const result =await get()
 
@@ -24,5 +38,7 @@ async function getAll(){
 export{
     get,
     post,
+    put,
+    del,
     getAll
 }
