@@ -2,11 +2,11 @@ import useForm from "../../hooks/useForm"
 import styles from "./Login.module.css"
 import { Link } from 'react-router-dom'
 
+const formKeys = {
+    email: "email",
+    password: "password",
+}
 export default function Login({ onLoginSubmit }) {
-    const formKeys = {
-        email: "email",
-        password: "password",
-    }
 
     const { values, changeHandler, submitHandler } = useForm(
         { [formKeys.email]: "", [formKeys.password]: "" },
