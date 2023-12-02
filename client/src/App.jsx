@@ -18,6 +18,10 @@ function App() {
         console.log(values);
     }
 
+    const onRegisterSubmit=(values)=>{
+        console.log(values);
+    }
+
     return (
         <div style={{
             backgroundImage: `url(${image})`,
@@ -34,7 +38,7 @@ function App() {
                 <Route path='/add' element={<Add />} />
                 <Route path='/account' element={<Account />} />
                 <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit}/>} />
-                <Route path='/register' element={<Register />} />
+                <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit}/>} />
             </Routes>
         </div   >
     )
