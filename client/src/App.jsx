@@ -9,8 +9,14 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 
 import image from './images/backgroundImage.png'
+import { useState } from 'react';
 
 function App() {
+    const [authData, setAuthData]=useState()
+
+    const onLoginSubmit=(values)=>{
+        console.log(values);
+    }
 
     return (
         <div style={{
@@ -27,7 +33,7 @@ function App() {
                 <Route path='/plays' element={<Plays />} />
                 <Route path='/add' element={<Add />} />
                 <Route path='/account' element={<Account />} />
-                <Route path='/login' element={<Login />} />
+                <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit}/>} />
                 <Route path='/register' element={<Register />} />
             </Routes>
         </div   >
