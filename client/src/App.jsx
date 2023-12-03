@@ -7,20 +7,22 @@ import Add from './components/add/Add';
 import Account from './components/account/Account';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Logout from './components/logout/Logout';
+
 
 import image from './images/backgroundImage.png'
 import { useState } from 'react';
 import { login, register } from './services/authService';
 
 function App() {
-    const [authData, setAuthData] = useState()
+    const [authData, setAuthData] = useState({})
 
     const onLoginSubmit = async (values) => {
         const result = await login(values.email, values.password)
 
         const data = {
-            email:result.email,
-            password:result.password,
+            email: result.email,
+            password: result.password,
         }
 
         setAuthData(data)
@@ -30,16 +32,16 @@ function App() {
         const result = await register(values.email, values.password, values.firstName, values.lastName)
 
         const data = {
-            email:result.email,
-            password:result.password,
-            firstName:result.firstName,
-            lastName:result.lastName,
+            email: result.email,
+            password: result.password,
+            firstName: result.firstName,
+            lastName: result.lastName,
         }
         setAuthData(data)
     }
 
-    const isAuthenticated=!!authData.email
-
+    const isAuthenticated = !!authData.email
+    
     return (
         <div style={{
             backgroundImage: `url(${image})`,
@@ -48,7 +50,7 @@ function App() {
             backgroundRepeat: 'no-repeat',
         }}>
 
-            <Header isAuthenticated={isAuthenticated}/>
+            <Header isAuthenticated={isAuthenticated} />
 
             <Routes>
                 <Route path='/' element={<Home />} />
@@ -57,6 +59,7 @@ function App() {
                 <Route path='/account' element={<Account />} />
                 <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit} />} />
                 <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit} />} />
+                <Route path='/logout' element={<Logout />} />
             </Routes>
         </div   >
     )
