@@ -10,17 +10,35 @@ import Register from './components/register/Register';
 
 import image from './images/backgroundImage.png'
 import { useState } from 'react';
+import { login, register } from './services/authService';
 
 function App() {
-    const [authData, setAuthData]=useState()
+    const [authData, setAuthData] = useState()
 
-    const onLoginSubmit=(values)=>{
-        console.log(values);
+    const onLoginSubmit = async (values) => {
+        const result = await login(values.email, values.password)
+
+        const data = {
+            email:result.email,
+            password:result.password,
+        }
+
+        setAuthData(data)
     }
 
-    const onRegisterSubmit=(values)=>{
-        console.log(values);
+    const onRegisterSubmit = async (values) => {
+        const result = await register(values.email, values.password, values.firstName, values.lastName)
+
+        const data = {
+            email:result.email,
+            password:result.password,
+            firstName:result.firstName,
+            lastName:result.lastName,
+        }
+        setAuthData(data)
     }
+
+    const isAuthenticated=!!authData.email
 
     return (
         <div style={{
@@ -30,15 +48,15 @@ function App() {
             backgroundRepeat: 'no-repeat',
         }}>
 
-            <Header />
+            <Header isAuthenticated={isAuthenticated}/>
 
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/plays' element={<Plays />} />
                 <Route path='/add' element={<Add />} />
                 <Route path='/account' element={<Account />} />
-                <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit}/>} />
-                <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit}/>} />
+                <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit} />} />
+                <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit} />} />
             </Routes>
         </div   >
     )
