@@ -24,7 +24,16 @@ const register=async(email, password, firstName, lastName)=>{
     return result
 }
 
+const logout=async ()=>{
+    const token=localStorage.getItem('accessToken')
+
+    await fetch(`${baseUrl}/logout`,{headers:{
+        'X-Authorization':token
+    }})
+}
+
 export{
     login,
-    register
+    register,
+    logout
 }

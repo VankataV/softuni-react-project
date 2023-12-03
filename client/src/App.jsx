@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 import Header from "./components/header/Header"
 import Home from './components/home/Home';
@@ -16,6 +16,7 @@ import { login, register } from './services/authService';
 
 function App() {
     const [authData, setAuthData] = useState({})
+    const navigate=useNavigate()
 
     const onLoginSubmit = async (values) => {
         const result = await login(values.email, values.password)
@@ -26,6 +27,8 @@ function App() {
         }
 
         setAuthData(data)
+        localStorage.setItem('accessToken', result.accessToken)
+        navigate('/')
     }
 
     const onRegisterSubmit = async (values) => {
@@ -38,10 +41,18 @@ function App() {
             lastName: result.lastName,
         }
         setAuthData(data)
+        localStorage.setItem('accessToken', result.accessToken)
+        navigate('/')
+    }
+
+    const logoutHandler=()=>{
+        setAuthData({})
+        localStorage.removeItem('accessToken')
+        navigate('/')
     }
 
     const isAuthenticated = !!authData.email
-    
+
     return (
         <div style={{
             backgroundImage: `url(${image})`,
@@ -59,7 +70,7 @@ function App() {
                 <Route path='/account' element={<Account />} />
                 <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit} />} />
                 <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit} />} />
-                <Route path='/logout' element={<Logout />} />
+                <Route path='/logout' element={<Logout logoutHandler={logoutHandler}/>} />
             </Routes>
         </div   >
     )

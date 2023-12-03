@@ -2,6 +2,11 @@ const baseUrl='http://localhost:3030/jsonstore'
 
 async function get(){
     const response=await fetch(`${baseUrl}/theaters`)
+
+    if(response.status===204){
+        return {}
+    }
+
     const result=await response.json()
 
     return result
