@@ -34,10 +34,10 @@ export default function Register({onRegisterSubmit}) {
                 <input type="text" id="email" name="email" placeholder="Your email" onChange={changeHandler} value={values.email}/>
 
                 <label htmlFor="password">Password</label>
-                <input type="text" id="password" name="password" placeholder="Your password" onChange={changeHandler} value={values.password}/>
+                <input type="password" id="password" name="password" placeholder="Your password" onChange={changeHandler} value={values.password}/>
 
                 <label htmlFor="rePassword">Repeat Password</label>
-                <input type="text" id="rePassword" name="rePassword" placeholder="Repeat password" onChange={changeHandler} value={values.rePassword}/>
+                <input type="password" id="rePassword" name="rePassword" placeholder="Repeat password" onChange={changeHandler} value={values.rePassword}/>
 
                 <input className={styles.button} type="submit" value="Register" />
                 <Link className={styles.link} to='/login'>Already have an account?</Link>

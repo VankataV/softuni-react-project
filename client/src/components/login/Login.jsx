@@ -22,7 +22,7 @@ export default function Login({ onLoginSubmit }) {
                 <input type="text" id="email" name={formKeys.email} placeholder="Your email" value={values.email} onChange={changeHandler} />
 
                 <label htmlFor="password">Password</label>
-                <input type="text" id="password" name={formKeys.password} placeholder="Your password" value={values.password} onChange={changeHandler} />
+                <input type="password" id="password" name={formKeys.password} placeholder="Your password" value={values.password} onChange={changeHandler} />
 
                 <input className={styles.button} type="submit" value="Login" />
                 <Link className={styles.link} to='/login'>Don't have an account?</Link>
