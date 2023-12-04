@@ -11,7 +11,7 @@ function Play({
     imageUrl,
 }) {
     return (
-        <Card style={{ width: '18rem' , display:'inline-block', marginLeft:'30px', marginRight:'30px'}}>
+        <Card style={{ width: '18rem' , display:'inline-block', marginLeft:'30px', marginRight:'30px', marginBottom:'50px'}}>
             <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
