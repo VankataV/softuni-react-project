@@ -1,4 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import Header from "./components/header/Header"
 import Home from './components/home/Home';
@@ -8,10 +9,9 @@ import Account from './components/account/Account';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
-
+import PlayDetails from './components/playDetails/PlayDetails';
 
 import image from './images/backgroundImage.png'
-import { useState } from 'react';
 import { login, register } from './services/authService';
 
 function App() {
@@ -65,7 +65,8 @@ function App() {
 
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/plays' element={<Plays />} />
+                <Route path='/plays' element={<Plays isAuthenticated={isAuthenticated}/>} />
+                <Route path='/plays/:playId' element={<PlayDetails />} />
                 <Route path='/add' element={<Add />} />
                 <Route path='/account' element={<Account />} />
                 <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit} />} />

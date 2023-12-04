@@ -5,13 +5,15 @@ import styles from './Play.module.css'
 import { Link } from 'react-router-dom'
 
 function Play({
+    _id,
     title,
     producer,
     theater,
     imageUrl,
+    isAuthenticated,
 }) {
     return (
-        <Card style={{ width: '18rem' , display:'inline-block', marginLeft:'30px', marginRight:'30px', marginBottom:'50px'}}>
+        <Card style={{ width: '18rem', display: 'inline-block', marginLeft: '30px', marginRight: '30px', marginBottom: '50px' }}>
             <Card.Img variant="top" src={imageUrl} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
@@ -22,9 +24,11 @@ function Play({
             <ListGroup className="list-group-flush">
                 <ListGroup.Item>Theater: {theater}</ListGroup.Item>
             </ListGroup>
-            <Card.Body>
-                <Card.Link as={Link} to="/details">Details</Card.Link>
-            </Card.Body>
+            {isAuthenticated && (
+                <Card.Body>
+                    <Card.Link as={Link} to={`/plays/${_id}`}>Details</Card.Link>
+                </Card.Body>
+            )}
         </Card>
     );
 }
