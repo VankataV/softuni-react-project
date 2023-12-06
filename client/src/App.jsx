@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 import Header from "./components/header/Header"
@@ -51,6 +51,10 @@ function App() {
         navigate('/')
     }
 
+    function detailsPage(){
+        const {playId} = useParams()
+    }
+
     const isAuthenticated = !!authData.email
 
     return (
@@ -66,7 +70,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/plays' element={<Plays isAuthenticated={isAuthenticated}/>} />
-                <Route path='/plays/:playId' element={<PlayDetails />} />
+                <Route path='/plays/:playId' element={<PlayDetails detailsPage={detailsPage}/>} />
                 <Route path='/add' element={<Add />} />
                 <Route path='/account' element={<Account />} />
                 <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit} />} />
