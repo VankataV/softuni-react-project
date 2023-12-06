@@ -3,7 +3,7 @@ const baseUrl = 'http://localhost:3030/data'
 const token = localStorage.getItem('accessToken')
 
 async function get() {
-    const response = await fetch(`${baseUrl}/theaters`)
+    const response = await fetch(`${baseUrl}/theatres`)
 
     if (response.status === 204) {
         return {}
@@ -15,7 +15,7 @@ async function get() {
 }
 
 async function post(data) {
-    await fetch(`${baseUrl}/theaters`, {
+    await fetch(`${baseUrl}/theatres`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -26,7 +26,7 @@ async function post(data) {
 }
 
 async function put(data) {
-    await fetch(`${baseUrl}/theaters`, {
+    await fetch(`${baseUrl}/theatres`, {
         method: "PUT",
         headers: {
             'content-type': 'application/json',
@@ -37,7 +37,7 @@ async function put(data) {
 }
 
 async function del() {
-    await fetch(`${baseUrl}/theaters`, {
+    await fetch(`${baseUrl}/theatres`, {
         method: "DELETE"
     })
 }
@@ -49,7 +49,7 @@ async function getAll() {
 }
 
 async function getOne(id){
-    const response = await fetch(`${baseUrl}/theaters/${id}`)
+    const response = await fetch(`${baseUrl}/theatres/${id}`)
 
     if (response.status === 204) {
         return {}
