@@ -22,7 +22,7 @@ function Play({
                 <ListGroup.Item>Producer: {producer}</ListGroup.Item>
             </ListGroup>
             <ListGroup className="list-group-flush">
-                <ListGroup.Item>Theater: {theater}</ListGroup.Item>
+                <ListGroup.Item>Theatre: {theater}</ListGroup.Item>
             </ListGroup>
             {isAuthenticated && (
                 <Card.Body>
