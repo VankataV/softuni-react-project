@@ -48,10 +48,23 @@ async function getAll() {
     return Object.values(result)
 }
 
+async function getOne(id){
+    const response = await fetch(`${baseUrl}/theaters/${id}`)
+
+    if (response.status === 204) {
+        return {}
+    }
+
+    const result = await response.json()
+
+    return result
+}
+
 export {
     get,
     post,
     put,
     del,
-    getAll
+    getAll,
+    getOne
 }
