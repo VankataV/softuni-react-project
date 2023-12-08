@@ -15,7 +15,6 @@ function Header({ isAuthenticated }) {
             {isAuthenticated && (
               <>
                 <Nav.Link as={Link} to="/add">Add</Nav.Link>
-                <Nav.Link as={Link} to="/account">Account</Nav.Link>
                 <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
               </>
             )}
