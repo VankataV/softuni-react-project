@@ -5,7 +5,6 @@ import Header from "./components/header/Header"
 import Home from './components/home/Home';
 import Plays from './components/theaters/Plays';
 import Add from './components/add/Add';
-import Account from './components/account/Account';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
@@ -14,9 +13,12 @@ import PlayDetails from './components/playDetails/PlayDetails';
 import image from './images/backgroundImage.png'
 import { login, register } from './services/authService';
 
+let userId=''
+
 function App() {
     const [authData, setAuthData] = useState({})
     const navigate=useNavigate()
+
 
     const onLoginSubmit = async (values) => {
         const result = await login(values.email, values.password)
@@ -25,6 +27,8 @@ function App() {
             email: result.email,
             password: result.password,
         }
+
+        userId=result._id
 
         setAuthData(data)
         localStorage.setItem('accessToken', result.accessToken)
@@ -40,6 +44,9 @@ function App() {
             firstName: result.firstName,
             lastName: result.lastName,
         }
+
+        userId=result._id
+
         setAuthData(data)
         localStorage.setItem('accessToken', result.accessToken)
         navigate('/')
@@ -70,9 +77,8 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/plays' element={<Plays isAuthenticated={isAuthenticated}/>} />
-                <Route path='/plays/:playId' element={<PlayDetails detailsPage={detailsPage}/>} />
+                <Route path='/plays/:playId' element={<PlayDetails detailsPage={detailsPage} userId={userId} />} />
                 <Route path='/add' element={<Add />} />
-                <Route path='/account' element={<Account />} />
                 <Route path='/login' element={<Login onLoginSubmit={onLoginSubmit} />} />
                 <Route path='/register' element={<Register onRegisterSubmit={onRegisterSubmit} />} />
                 <Route path='/logout' element={<Logout logoutHandler={logoutHandler}/>} />
